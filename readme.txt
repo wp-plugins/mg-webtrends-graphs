@@ -29,11 +29,20 @@ http://support.mirkogrewing.eu/
 
 == Frequently asked questions ==
 
-= Can I change the language? =
+= Where I can find the FAQ? =
+[Here!](http://support.mirkogrewing.eu/kb/index.php "FAQ")
 
-At the moment the plugin tries using the Wordpress locale set in your `wp-config.php`.
+== Screenshots ==
+
+1. Use the button to open the wizard
+2. Fill the text fields with your options
+3. Click on "Insert Shortcode" to have it placed in your page
+4. Enjoy the result
 
 == Changelog ==
+
+= v0.2.1 =
+* Minor fixes.
 
 = v0.2 =
 * Added the wizard to the toolbar.
