@@ -3,7 +3,7 @@
 Plugin Name: mgtrends
 Plugin URI: http://www.mirkogrewing.eu/mg-webtrends-graphs/
 Description: This plugin provides a shortcode that allows to embed a Google WebTrends graphic in your website.
-Version: 0.1
+Version: 0.2.1
 Author: Mirko Grewing
 Author URI: http://www.mirkogrewing.eu
 
