@@ -12,25 +12,23 @@ This plugin provides a shortcode that allows to embed a Google Trends graph in y
 
 == Description ==
 
-If you want to embed Google Trends graphs in your website this is the plugin for you: with a simple shortcode you will get the graph you need in a few seconds.  
-A nice wizard will help you choosing the proper options!  
+If you want to embed Google Trends graphs in your website this is the plugin for you: with a simple shortcode you will get the graph you need in a few seconds. A nice wizard will help you choosing the proper options and automatically get the needed shortcode.
   
-Do you want to raise a bug, propose a change, request for support or simply congratulate me? The Official Page of the plugin is waiting for your voice!    
+Do you want to raise a bug, propose a change, request for support or simply say hi? The Official Page of the plugin is waiting for your voice!    
   
-http://www.mirkogrewing.eu/woocommerce-frontend-inventory/     
-http://support.mirkogrewing.eu/   
+http://www.mirkogrewing.it/mg-webtrends-graphs/     
 
 == Installation ==
 
 1. Upload the plugin's folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. While editing a document, click on the icon in the toolbar and fill in the text fields.
+1. While editing a document, click on the icon of MG WebTrends Graph in the toolbar and fill in the text fields.
 1. Click on the "Insert" button to place the shortcode inside the page.
 
 == Frequently asked questions ==
 
 = Where I can find the FAQ? =
-[Here!](http://support.mirkogrewing.eu/kb/index.php "FAQ")
+[Here!](http://support.mirkogrewing.it/kb/index.php "FAQ")
 
 == Screenshots ==
 
