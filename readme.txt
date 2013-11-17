@@ -3,8 +3,8 @@ Contributors: rashef
 Donate link: http://cl.ly/0m1h2L3u0K3Y
 Tags: Google, Trends, graph, chart, shortcode
 Requires at least: 3.3
-Tested up to: 3.5.2
-Stable tag: 0.2.1
+Tested up to: 3.7.1
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,13 @@ This plugin provides a shortcode that allows to embed a Google Trends graph in y
 == Description ==
 
 If you want to embed Google Trends graphs in your website this is the plugin for you: with a simple shortcode you will get the graph you need in a few seconds. A nice wizard will help you choosing the proper options and automatically get the needed shortcode.
+
+Apart from the keywords, through the shortcode builder you can specify:
+* dimensions of the graph (in pixels)
+* localization (using the two letters country code)
+* [NEW] whether you want to use average values
+* [NEW] start date of the graph
+* [NEW] timeframe of the graph (from the starting date - in months)
   
 Do you want to raise a bug, propose a change, request for support or simply say hi? The Official Page of the plugin is waiting for your voice!    
   
@@ -38,6 +45,10 @@ http://www.mirkogrewing.it/mg-webtrends-graphs/
 4. Enjoy the result
 
 == Changelog ==
+
+= v0.3 =
+* Added option to limit timeframe.
+* Added option to show average values.
 
 = v0.2.1 =
 * Minor fixes.

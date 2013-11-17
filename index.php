@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: mgtrends
-Plugin URI: http://www.mirkogrewing.eu/mg-webtrends-graphs/
-Description: This plugin provides a shortcode that allows to embed a Google WebTrends graphic in your website.
-Version: 0.2.1
+Plugin Name: MG-WebTrends-Graphs
+Plugin URI: http://www.mirkogrewing.it/mg-webtrends-graphs/
+Description: Embed a Google Trends graphic in your website in a handful of second thanks to the shortcode provided by this plugin and the shortcode builder integrated in the editor.
+Version: 0.3
 Author: Mirko Grewing
-Author URI: http://www.mirkogrewing.eu
+Author URI: http://www.mirkogrewing.it
 
-	Copyright: © 2013 Mirko Grewing (email : mirko@grewing.us)
+	Copyright: © 2013 Mirko Grewing (email : mirko@grewing.me)
 	License: GNU General Public License v3.0
 	License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -38,7 +38,7 @@ class MGTrends
 	
 	function filter_mce_plugin( $plugins ) {
 		// this plugin file will work the magic of our button
-		$plugins['mgtrends'] = plugin_dir_url( __FILE__ ) . 'mgtrends_plugin.js';
+		$plugins['mgtrends'] = plugin_dir_url( __FILE__ ) . 'js/mgtrends_plugin.js';
 		return $plugins;
 	}
 }
@@ -49,6 +49,9 @@ function mg_trend($atts){
 			'h' => '330',           // height
 			'q' => '',              // query
 			'loc' => 'US',          // location
+            'val' => 'std',         // average trigger
+            'sdate' => '',          // start date
+            'elaps' => '',          // timeframe
 	), $atts ) );
 	//format input
 	$h=(int)$h;
@@ -56,9 +59,12 @@ function mg_trend($atts){
 	$q=esc_attr($q);
 	$loc=esc_attr($loc);
 	$lan=str_replace("_","-",get_locale());
+    $val=esc_attr($val);
+    $sdate = esc_attr($sdate);
+    $elaps = (int)$elaps;
 	ob_start();
 	?>
-	<script type="text/javascript" src="http://www.google.com/trends/embed.js?hl=<?php echo $lan;?>&q=<?php echo $q;?>&geo=<?php echo $loc;?>&cmpt=q&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=<?php echo $w;?>&h=<?php echo $h;?>"></script>
+	<script type="text/javascript" src="http://www.google.com/trends/embed.js?hl=<?php echo $lan;?>&q=<?php echo $q;?><?php echo '',(!empty($sdate)) ? '&date=' . $sdate .'+' . $elaps .'m' : ''; ?>&geo=<?php echo $loc;?>&cmpt=q&content=1&cid=<?php echo '', ($avg == 'avg') ? 'TIMESERIES_GRAPH_AVERAGES_CHART' : 'TIMESERIES_GRAPH_0'; ?>&export=5&w=<?php echo $w;?>&h=<?php echo $h;?>"></script>
 	<?php
 	return ob_get_clean();
 }
