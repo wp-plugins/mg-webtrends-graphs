@@ -14,16 +14,12 @@ This plugin provides a shortcode that allows to embed a Google Trends graph in y
 
 If you want to embed Google Trends graphs in your website this is the plugin for you: with a simple shortcode you will get the graph you need in a few seconds. A nice wizard will help you choosing the proper options and automatically get the needed shortcode.
 
-Apart from the keywords, through the shortcode builder you can specify:
-* dimensions of the graph (in pixels)
-* localization (using the two letters country code)
-* [NEW] whether you want to use average values
-* [NEW] start date of the graph
-* [NEW] timeframe of the graph (from the starting date - in months)
-  
-Do you want to raise a bug, propose a change, request for support or simply say hi? The Official Page of the plugin is waiting for your voice!    
-  
-http://www.mirkogrewing.it/mg-webtrends-graphs/     
+Apart from the keywords, through the shortcode builder you can specify:   
+* dimensions of the graph (in pixels)    
+* localization (using the two letters country code)     
+* [NEW] whether you want to use average values      
+* [NEW] start date of the graph     
+* [NEW] timeframe of the graph (from the starting date - in months)     
 
 == Installation ==
 
@@ -34,8 +30,7 @@ http://www.mirkogrewing.it/mg-webtrends-graphs/
 
 == Frequently asked questions ==
 
-= Where I can find the FAQ? =
-[Here!](http://support.mirkogrewing.it/kb/index.php "FAQ")
+TB
 
 == Screenshots ==
 
@@ -45,6 +40,9 @@ http://www.mirkogrewing.it/mg-webtrends-graphs/
 4. Enjoy the result
 
 == Changelog ==
+
+= v0.3.1 =
+* Minor changes for Wordpress 4 compatibility.
 
 = v0.3 =
 * Added option to limit timeframe.
