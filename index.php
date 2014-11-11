@@ -3,7 +3,7 @@
 Plugin Name: MG-WebTrends-Graphs
 Plugin URI: http://www.mirkogrewing.it/mg-webtrends-graphs/
 Description: Embed a Google Trends graphic in your website in a handful of second thanks to the shortcode provided by this plugin and the shortcode builder integrated in the editor.
-Version: 0.3.1
+Version: 1.0
 Author: Mirko Grewing
 Author URI: http://www.mirkogrewing.it
 
@@ -12,55 +12,77 @@ Author URI: http://www.mirkogrewing.it
 	License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
-if (!defined('ABSPATH'))
-	die("Can't load this file directly");
+add_action('admin_head', 'mgtrends_add_my_tc_button');
+load_plugin_textdomain('mgtrends_tc_button', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
-class MGTrends
+/**
+ * Main function to call the button
+ * 
+ * @return null
+ */
+function mgtrends_add_my_tc_button()
 {
-	/**
-	 * Construct function
-	 * 
-	 * @return null
-	 */
-	function __construct()
-	{
-		add_action('admin_init', array($this, 'action_admin_init'));
+	global $typenow;
+	// check user permissions
+	if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+		return;
 	}
-	/**
-	 * Add feature for the right user
-	 * 
-	 * @return null
-	 */
-	function action_admin_init()
-	{
-		if (current_user_can('edit_posts') && current_user_can('edit_pages')) {
-			add_filter('mce_buttons', array($this, 'filter_mce_button'));
-			add_filter('mce_external_plugins', array($this, 'filter_mce_plugin'));
-		}
-	}
-	
-	/**
-	 * Add the button to the editor
-	 * 
-	 * @return array
-	 */
-	function filter_mce_button($buttons)
-	{
-		array_push($buttons, '|', 'mgtrends_button');
-		return $buttons;
-	}
-	
-	/**
-	 * Associate the JavaScript
-	 * 
-	 * @return array
-	 */
-	function filter_mce_plugin($plugins)
-	{
-		$plugins['mgtrends'] = plugin_dir_url(__FILE__) . 'js/mgtrends_plugin.js';
-		return $plugins;
+	// verify the post type
+    if (!in_array($typenow, array('post', 'page')))
+		return;
+	// check if WYSIWYG is enabled
+	if (get_user_option('rich_editing') == 'true') {
+		add_filter("mce_external_plugins", "mgtrends_add_tinymce_plugin");
+		add_filter('mce_buttons', 'mgtrends_register_my_tc_button');
 	}
 }
+
+/**
+ * Specify the path of TinyMCE plugin
+ * 
+ * @return array
+ */
+function mgtrends_add_tinymce_plugin($plugin_array)
+{
+	$plugin_array['mgtrends_tc_button'] = plugins_url( '/js/mgtrends_plugin.js', __FILE__ );
+	return $plugin_array;
+}
+
+/**
+ * Add a button to the editor
+ * 
+ * @return array
+ */
+function mgtrends_register_my_tc_button($buttons)
+{
+	array_push($buttons, "mgtrends_tc_button");
+	return $buttons;
+}
+
+/**
+ * Load a specific CSS
+ * 
+ * @return array
+ */
+function mgtrends_tc_css()
+{
+	wp_enqueue_style('mgtrends-tc', plugins_url('/css/mgtrends.css', __FILE__));
+}
+
+add_action('admin_enqueue_scripts', 'mgtrends_tc_css');
+
+/**
+ * Load translations
+ * 
+ * @return string
+ */
+function mgtrends_lang($locales)
+{
+	$locales['mgtrends_tc_button'] = plugin_dir_path ( __FILE__ ) . 'languages/translations.php';
+	return $locales;
+}
+
+add_filter( 'mce_external_languages', 'mgtrends_lang');
 
 /**
  * Parse the parameters from the shortcode
@@ -73,7 +95,7 @@ function mg_trend($atts)
 		'w' => '500',           // width
 		'h' => '330',           // height
 		'q' => '',              // query
-		'loc' => 'US',          // location
+		'loc' => '',          	// location
 		'val' => 'std',         // average trigger
 		'sdate' => '',          // start date
 		'elaps' => '',          // timeframe
@@ -93,4 +115,3 @@ function mg_trend($atts)
 }
 
 add_shortcode('mgtrends', 'mg_trend');
-$mygallery = new MGTrends();
