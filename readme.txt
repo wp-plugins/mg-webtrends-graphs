@@ -1,5 +1,5 @@
 === MG Webtrends Graphs ===
-Contributors: Mirko Grewing <mirko.grewing@live.com>
+Contributors: rashef
 Donate link: http://cl.ly/0m1h2L3u0K3Y
 Tags: Google, Trends, graph, chart, shortcode
 Requires at least: 3.9
